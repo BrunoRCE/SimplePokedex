@@ -1,4 +1,4 @@
-package com.brunocamacho.simplepokedex.model;
+package com.brunocamacho.simplepokedex.domain.entity;
 
 public class Pokemon {
 

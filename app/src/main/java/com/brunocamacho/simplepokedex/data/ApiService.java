@@ -10,7 +10,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Streaming;
 
-public interface PokeService {
+public interface ApiService {
 
     @GET("pokemon")
     Call<PokeData> getData(@Query("limit") int limit);

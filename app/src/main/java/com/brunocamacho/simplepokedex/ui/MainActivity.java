@@ -11,8 +11,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.brunocamacho.simplepokedex.R;
-import com.brunocamacho.simplepokedex.interactor.GetPokemons;
-import com.brunocamacho.simplepokedex.model.Pokemon;
+import com.brunocamacho.simplepokedex.data.ApiData;
+import com.brunocamacho.simplepokedex.domain.useCase.GetPokemons;
+import com.brunocamacho.simplepokedex.domain.entity.Pokemon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
         recyclerView = findViewById(R.id.recycler);
         progressBar = findViewById(R.id.progress);
 
-        presenter = new MainPresenter(this, new GetPokemons());
+        presenter = new MainPresenter(this,
+                new GetPokemons(new ApiData()));
 
         pokemons = new ArrayList<>();
 

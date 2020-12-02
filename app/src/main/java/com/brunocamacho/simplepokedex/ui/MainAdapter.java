@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.brunocamacho.simplepokedex.R;
-import com.brunocamacho.simplepokedex.model.Pokemon;
+import com.brunocamacho.simplepokedex.domain.entity.Pokemon;
 import com.bumptech.glide.Glide;
 
 import java.util.List;

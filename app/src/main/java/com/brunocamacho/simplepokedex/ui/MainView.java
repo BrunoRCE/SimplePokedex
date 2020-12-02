@@ -1,6 +1,6 @@
 package com.brunocamacho.simplepokedex.ui;
 
-import com.brunocamacho.simplepokedex.model.Pokemon;
+import com.brunocamacho.simplepokedex.domain.entity.Pokemon;
 
 import java.util.List;
 
