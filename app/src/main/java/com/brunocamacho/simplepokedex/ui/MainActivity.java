@@ -2,16 +2,14 @@ package com.brunocamacho.simplepokedex.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.brunocamacho.simplepokedex.R;
 import com.brunocamacho.simplepokedex.data.ApiData;
+import com.brunocamacho.simplepokedex.databinding.ActivityMainBinding;
 import com.brunocamacho.simplepokedex.domain.useCase.GetPokemons;
 import com.brunocamacho.simplepokedex.domain.entity.Pokemon;
 
@@ -20,8 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
-    private RecyclerView recyclerView;
-    private ProgressBar progressBar;
+    private ActivityMainBinding binding;
     private MainAdapter adapter;
     private List<Pokemon> pokemons;
 
@@ -30,10 +27,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recycler);
-        progressBar = findViewById(R.id.progress);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
 
         presenter = new MainPresenter(this,
                 new GetPokemons(new ApiData()));
@@ -42,9 +39,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         adapter = new MainAdapter(pokemons);
 
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3, GridLayout.VERTICAL, false));
+        binding.recycler.setAdapter(adapter);
+        binding.recycler.setHasFixedSize(true);
+        binding.recycler.setLayoutManager(new GridLayoutManager(this, 3, GridLayout.VERTICAL, false));
     }
 
     @Override
@@ -62,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showProgress(boolean show) {
-        progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+        binding.progress.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     @Override
